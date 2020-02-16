@@ -21,7 +21,7 @@ articles.get('/', getArticles);
 articles.delete('/:articleId',
   celebrate({
     params: Joi.object().keys({
-      articleId: Joi.string(),
+      articleId: Joi.string().required(),
     }),
   }),
   deleteArticle);

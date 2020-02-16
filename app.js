@@ -35,6 +35,7 @@ app.use(errorLogger);
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   const status = isCelebrate(err) ? 422 : err.statusCode;
+  console.log(err);
   res.status(status).send({ message: err.message });
 });
 

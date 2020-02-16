@@ -1,7 +1,9 @@
+const mongoose = require('mongoose');
 const Article = require('../models/article');
 const ErrorRequest = require('../errors/errorRequest');
 const ErrorMiss = require('../errors/errorMiss');
 const ErrorAuth = require('../errors/errorAuth');
+const ErrorValidation = require('../errors/errorValidation');
 
 module.exports.createArticle = (req, res, next) => {
   const {
@@ -34,6 +36,10 @@ module.exports.getArticles = (req, res, next) => {
 
 module.exports.deleteArticle = (req, res, next) => {
   const { articleId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(articleId)) {
+    throw new ErrorValidation('Некорректный идентификатор');
+  }
 
   Article.findById(articleId)
     .then((article) => {
