@@ -10,6 +10,8 @@ const ErrorMiss = require('./errors/errorMiss');
 const { errorLogger, requestLogger } = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 const routes = require('./routes/index');
+const signIn = require('./routes/signIn');
+const signUp = require('./routes/signUp');
 
 const app = express();
 
@@ -24,6 +26,9 @@ mongoose.connect(DB_ADRESS, {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
+
+app.use('/signin', signIn);
+app.use('/signup', signUp);
 
 app.use(auth);
 
