@@ -8,10 +8,7 @@ const { DB_ADRESS } = require('./config');
 const { PORT_SERVER } = require('./config');
 const ErrorMiss = require('./errors/errorMiss');
 const { errorLogger, requestLogger } = require('./middlewares/logger');
-const auth = require('./middlewares/auth');
 const routes = require('./routes/index');
-const signIn = require('./routes/signIn');
-const signUp = require('./routes/signUp');
 
 const app = express();
 
@@ -27,12 +24,7 @@ mongoose.connect(DB_ADRESS, {
   useUnifiedTopology: true,
 });
 
-app.use('/signin', signIn);
-app.use('/signup', signUp);
-
-app.use(auth);
-
-app.use('/', routes);
+app.use('/api', routes);
 
 app.use((req, res, next) => {
   next(new ErrorMiss('Запрашиваемый ресурс не найден'));
