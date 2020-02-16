@@ -1,5 +1,7 @@
 # Diplom-api
 
+http://mestoivanitskiy.tk/api
+
 ###### (NPM, Express.js, MongoDB, API Rest)
 
 * npm run start - запуск
