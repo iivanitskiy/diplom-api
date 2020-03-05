@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const { isCelebrate } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const { DB_ADRESS } = require('./config');
 const { PORT_SERVER } = require('./config');
 const ErrorMiss = require('./errors/errorMiss');
@@ -12,6 +13,14 @@ const routes = require('./routes/index');
 
 const app = express();
 
+const corsOptions = {
+  origin: 'http://www.mestoivanitskiy.tk',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
