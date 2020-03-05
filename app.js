@@ -13,14 +13,7 @@ const routes = require('./routes/index');
 
 const app = express();
 
-const corsOptions = {
-  origin: 'http://localhost:8080',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  optionsSuccessStatus: 200,
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
+app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
