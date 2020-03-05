@@ -1,6 +1,6 @@
 # Diplom-api
 
-http://mestoivanitskiy.tk/api
+http://www.mestoivanitskiy.tk/api
 
 ###### (NPM, Express.js, MongoDB, API Rest)
 
