@@ -14,7 +14,7 @@ const routes = require('./routes/index');
 const app = express();
 
 const corsOptions = {
-  origin: 'http://www.mestoivanitskiy.tk',
+  origin: 'http://localhost:8080',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   optionsSuccessStatus: 200,
   credentials: true,
