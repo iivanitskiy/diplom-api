@@ -63,7 +63,16 @@ module.exports.login = (req, res, next) => {
           httpOnly: true,
           sameSite: true,
         })
+        .json({ name: user.name })
         .end();
     })
     .catch(next);
+};
+
+module.exports.logout = (req, res, next) => {
+  res.status(200).clearCookie('jwt', {
+    httpOnly: true,
+    sameSite: true,
+  })
+    .end();
 };
