@@ -62,6 +62,7 @@ module.exports.login = (req, res, next) => {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
           domain: '',
+          // sameSite: true,
         })
         .json({ name: user.name })
         .end();
@@ -72,7 +73,8 @@ module.exports.login = (req, res, next) => {
 module.exports.logout = (req, res, next) => {
   res.status(200).clearCookie('jwt', {
     httpOnly: true,
-    sameSite: true,
+    domain: '',
+    // sameSite: true,
   })
     .end();
 };
