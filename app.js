@@ -15,7 +15,7 @@ const app = express();
 
 const allowedCors = [
   'http://localhost:8080',
-  'http://newsexplorer.ga',
+  'https://newsexplorer.ga',
   'https://iivanitskiy.github.io/diplom-frontend',
 ];
 
