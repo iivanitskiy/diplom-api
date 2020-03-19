@@ -1,6 +1,6 @@
 # Diplom-api
 
-http://www.mestoivanitskiy.tk/api
+https://newsexplorer.ga/api
 
 ###### (NPM, Express.js, MongoDB, API Rest)
 
