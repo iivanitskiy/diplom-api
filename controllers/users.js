@@ -60,10 +60,21 @@ module.exports.login = (req, res, next) => {
       res
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
-          httpOnly: true,
-          sameSite: true,
+          httpOnly: false,
+          domain: '',
+          // sameSite: true,
         })
+        .json({ name: user.name })
         .end();
     })
     .catch(next);
+};
+
+module.exports.logout = (req, res, next) => {
+  res.status(200).clearCookie('jwt', {
+    httpOnly: true,
+    domain: '',
+    // sameSite: true,
+  })
+    .end();
 };

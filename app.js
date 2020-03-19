@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const { isCelebrate } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+// const cors = require('cors');
 const { DB_ADRESS } = require('./config');
 const { PORT_SERVER } = require('./config');
 const ErrorMiss = require('./errors/errorMiss');
@@ -12,6 +13,23 @@ const routes = require('./routes/index');
 
 const app = express();
 
+const allowedCors = [
+  'http://localhost:8080',
+  'https://newsexplorer.ga',
+  'https://iivanitskiy.github.io/diplom-frontend',
+];
+
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+  }
+  next();
+});
+
+// app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
